@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>For Pesala Mounika 💖</title>
+<style>
+  :root{
+    --bg:#ffc0cb;
+    --accent:#e84a5f;
+    --battery-fill:#6fcf6b;
+  }
+  html,body{height:100%;margin:0;font-family:system-ui}
+  body{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(180deg,var(--bg),#ff9bb0);
+  }
+
+  .card{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+    max-width:500px;
+    width:100%;
+  }
+
+  .battery{
+    width:70px;
+    height:130px;
+    border:4px solid #eee;
+    border-radius:12px;
+    margin:20px auto;
+    overflow:hidden;
+    display:flex;
+    align-items:flex-end;
+  }
+
+  .fill{
+    width:100%;
+    height:0%;
+    background:linear-gradient(#a8ffb0,var(--battery-fill));
+    transition:height 0.1s linear;
+  }
+
+  .heart{
+    font-size:50px;
+    cursor:pointer;
+    user-select:none;
+  }
+
+  .hidden{
+    opacity:0;
+    transform:translateY(10px);
+    transition:0.4s ease;
+  }
+
+  .show{
+    opacity:1;
+    transform:translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h2>Then hold my heart like you always do ❤️</h2>
+  <p>Press and hold the heart until it fills 💕</p>
+
+  <div class="battery">
+    <div class="fill" id="fill"></div>
+  </div>
+
+  <div class="heart" id="heart">💖</div>
+
+  <div id="message" class="hidden">
+    <h3>Pesala Mounika 💕</h3>
+    <p>
+      You are my favorite part of every single day.  
+      My safest place.  
+      My biggest blessing.  
+    </p>
+    <p>
+      No matter what, you've had my heart forever ❤️  
+    </p>
+    <h4>Happy Valentine's Day, My Love 💘</h4>
+  </div>
+</div>
+
+<script>
+let progress = 0;
+let interval;
+const fill = document.getElementById("fill");
+const heart = document.getElementById("heart");
+const message = document.getElementById("message");
+
+heart.addEventListener("mousedown", start);
+heart.addEventListener("mouseup", stop);
+heart.addEventListener("mouseleave", stop);
+heart.addEventListener("touchstart", start);
+heart.addEventListener("touchend", stop);
+
+function start(){
+  interval = setInterval(()=>{
+    if(progress < 100){
+      progress += 2;
+      fill.style.height = progress + "%";
+    } else {
+      clearInterval(interval);
+      message.classList.add("show");
+    }
+  },50);
+}
+
+function stop(){
+  clearInterval(interval);
+}
+</script>
+
+</body>
+</html>
